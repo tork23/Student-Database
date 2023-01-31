@@ -1,0 +1,94 @@
+<title>
+    <%= title %>
+</title>
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/css/add_student.css">
+
+<form action="/student/create_student" method="POST" class="position-absolute top-50 start-50 translate-middle" style="margin-top:2rem;">
+    <h2 class="mt-5 text-center">
+        Create New Student
+    </h2>
+
+    <div class="mb-4">
+        <h5> Personal Details </h5>
+    </div>
+    
+    <div class="row mb-4">
+        <!-- Name -->
+        <div class="col">
+          <input type="text" class="form-control" name="name" placeholder="Name" required>
+        </div>
+        <!-- Last name -->
+        <div class="col">
+          <input type="text" class="form-control" name="last_name"  placeholder="Last Name" required>
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="row mb-4">
+      <div class="col-sm-12">
+        <input type="email" class="form-control" name="email" placeholder="Email" required>
+      </div>
+    </div>
+    <div class="mb-4">
+        <h5> Education </h5>
+    </div>
+    <!-- College Name -->
+    <div class="row mb-4">
+        <div class="col-sm-12">
+          <input type="text" class="form-control" name="college" placeholder="College Name" required>
+        </div>
+    </div>
+    <!-- Batch and Status -->
+    <div class="row mb-4">
+        <!-- Batch -->
+        <div class="col input-group mb-3">
+            <label class="input-group-text" for="batch">Batch</label>
+            <select class="form-select" id="batch" name="batch" required>
+                <option selected>Select...</option>
+                <option value="Jan'22">Jan'22</option>
+                <option value="Mar'22">Mar'22</option>
+                <option value="May'22">May'22</option>
+                <option value="Jul'22">Jul'22</option>
+                <option value="Sep'22">Sep'22</option>
+                <option value="Nov'22">Nov'22</option>
+            </select>
+        </div>
+
+        <!-- Status -->
+        <div class="col input-group mb-3">
+            <label class="input-group-text" for="status">Status</label>
+            <select class="form-select" id="status" name="status" required>
+              <option selected>Select...</option>
+              <option value="Placed">Placed</option>
+              <option value="Not Placed">Not Placed</option>
+            </select>
+        </div>
+    </div>
+    <div class="mb-4">
+        <h5> Scores </h5>
+    </div>
+    <div class="row mb-4">
+        <!-- DSA Score -->
+        <div class="col input-group mb-3">
+            <label class="input-group-text" for="dsa_score">DSA</label>
+            <input type="text" class="form-control" name="dsa_score" required>
+        </div>
+        <!-- Wed Dev Score -->
+        <div class="col input-group mb-3">
+            <label class="input-group-text" for="webD_score">Web D</label>
+            <input type="text" class="form-control" name="webd_score" required>
+
+        </div>
+        <!-- React Score -->
+        <div class="col input-group mb-3">
+            <label class="input-group-text" for="react_score">React</label>
+            <input type="text" class="form-control" name="react_score" required>
+        </div>
+    </div>
+    <!-- Submit button -->
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Add Student</button>
+    </div>
+  
+</form>

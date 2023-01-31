@@ -1,0 +1,77 @@
+<title>
+  <%= title %>
+</title>
+
+<!-- Heading -->
+<div class="mt-2 mb-3 text-center">
+  <h5>Allocate Student for <%= interview.company_name %></h5>
+</div>
+<!-- Form for adding students to an interview -->
+<form action="/allocation/adding-student/<%=interview._id%>" method="POST" class="mt-5 ">
+    <div>
+      <!-- Student Selection -->
+      <div class="">
+        <select class="form-select mb-4" name="student" required>
+          <option selected>Select...</option>
+          <% for(s of student){%>
+            <option value="<%=s._id%>">
+              <%= s.name %> <%= s.last_name %>
+            </option>
+          <% } %>  
+        </select>
+      </div>
+      <!-- Add Student Button -->
+      <div class="mb-4 text-center">
+        <button type="submit" class="btn btn-primary">Add Student</button>
+      </div>
+</form>
+
+<!-- See the results -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">College</th>
+      <th scope="col">Batch</th>
+      <th scope="col">DSA Score</th>
+      <th scope="col">WebD Score</th>
+      <th scope="col">React Score</th>
+      <th scope="col">Result</th>
+      <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% for(s of interview.list_of_students){ %>
+        <form action="/allocation/updating-result/<%=interview._id%>" method="POST" class="mt-5 position-absolute start-50 translate-middle">
+          <tr> 
+            <td><%= s.student.name %></td>
+            <td><%= s.student.last_name%></td>
+            <td><%= s.student.email %></td>
+            <td><%= s.student.college %></td>
+            <td><%= s.student.batch %></td>
+            <td><%= s.student.dsa_score %></td>
+            <td><%= s.student.webd_score %></td>
+            <td><%= s.student.react_score %></td>
+            <td><%= s.result %></td>
+            <td>
+              <input type="hidden" name="student" value="<%= s.student._id %>">
+                <select class="form-select" name="result" required>
+                  <option selected>Select...</option>
+                  <option value="PASS">PASS</option>
+                  <option value="FAIL" >FAIL</option>
+                  <option value="On Hold" >On Hold</option>
+                  <option value="Didn’t Attempt" >Didn’t Attempt</option>                                
+                </select>
+            </td>
+            <td><button type="submit" class="btn btn-primary">Update</button></td>
+          </tr>
+        </form>
+        <% } %>
+  </tbody>
+</table>
+
+  
+    

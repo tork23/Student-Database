@@ -1,0 +1,23 @@
+<header id="layout-header">
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Students Database</a>
+            <!-- If user is logged in -->
+          <% if (locals.user){ %>
+            <div class="d-flex">
+              <a class="navbar-brand" href="/users/csv/download_csv">Download CSV</a>
+              <a class="navbar-brand" href="/student/student_list">Student List</a>
+              <a class="navbar-brand" href="/interview/interview_list">Interview List</a>    
+              <a class="navbar-brand" href="/users/profile"><%= user.name %></a>
+              <a class="navbar-brand" href="/users/sign-out">Sign Out</a>
+            </div>
+            <!-- If user is not logged in  -->
+          <% }else{ %>
+            <div class="d-flex">
+              <a class="navbar-brand" href="/users/sign-in">Sign In</a>
+              <a class="navbar-brand" href="/users/sign-up">Sign Up</a>
+            </div>
+          <% } %>
+        </div>
+    </nav>
+</header>

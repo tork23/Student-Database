@@ -1,0 +1,49 @@
+<!-- View the added list here only -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">College</th>
+      <th scope="col">Batch</th>
+      <th scope="col">DSA Score</th>
+      <th scope="col">WebD Score</th>
+      <th scope="col">React Score</th>
+      <th scope="col">Status</th>
+      <th colspan="2" style="text-align: center">Update Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(s of interview.list_of_students){%>
+    <form
+      action="/allocation/updateResult/<%=interview._id%>"
+      method="POST"
+      class="form-group"
+    >
+      <tr>
+        <td><%= s.student.name %></td>
+        <td><%= s.student.last_name %></td>
+        <td><%= s.student.email %></td>
+        <td><%= s.student.college %></td>
+        <td><%= s.student.batch %></td>
+        <td><%= s.student.dsa_score %></td>
+        <td><%= s.student.webD_score %></td>
+        <td><%= s.student.react_score %></td>
+        <td><%= s.student.status %></td>
+        <td>
+          <input type="hidden" name="student" value="<%= s.student._id %>" />
+          <select name="result" id="select-result">
+            <option value="" disabled selected>Result</option>
+            <option value="PASS">PASS</option>
+            <option value="FAIL">FAIL</option>
+            <option value="On Hold">On Hold</option>
+            <option value="Didn’t Attempt">Didn’t Attempt</option>
+          </select>
+        </td>
+        <td><input type="submit" value="Update" class="btn btn-primary" /></td>
+      </tr>
+    </form>
+    <% } %>
+  </tbody>
+</table>
